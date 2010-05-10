@@ -3,11 +3,24 @@
 <head>
     <title>Crew Chat</title>
     <style type="text/css" media="screen">
-        #chat-log       { width: 400px; height: 300px; padding: 0; border: 1px solid #E9E9E9; }
-        #input          { width: 400px; height: 25px; border: 1px solid #CCCCCC; }
+        /* LAYOUT */
+        div.clear               { clear: both; }
+        #wrap                   { width: 700px; height: 600px; margin: 100px auto 0 auto;}
+        #chat-log               { width: 660px; height: 525px; margin: 0; padding: 20px; background: #D0D6DC; border: 1px solid #E9E9E9; border-bottom: 0; list-style: none; overflow-y: scroll; }
+        #chat-log li            { border-radius: 10px; margin: 5px 0; background: #FFFFFF; border: 1px solid #C5CACE; padding: 10px; }
+        #chat-log li p          { display: block; margin: 0; }
+        #chat-log li p.name     { font-weight: bold; padding-bottom: 10px; float: left; }
+        #chat-log li p.time     { font-weight: bold; padding-bottom: 10px; float: right; color: #999999; }
+        #chat-log p.secondary   { margin-top: 10px; }
+        
+        #input                  { width: 680px; height: 30px; margin: 0; padding: 0 10px; border: 1px solid #CCCCCC; }
+        
+        /* TYPOGRAPHY */
+        html                    { font: 12px Helvetica; }
     </style>
     
     <script type="text/javascript" charset="utf-8" src="jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="json.js"></script>
     <script type="text/javascript" charset="utf-8">
     var CrewChat;
     $(function() { 
@@ -17,13 +30,48 @@
             client: null,
             
             start: function start() {
-                var self = this;
-                this.client = new WebSocket("ws://0.0.0.0:8080?name=Matte");
+                var self = this
+                this.client = new WebSocket("ws://0.0.0.0:8080?name=Matte")
                 this.client.onmessage = function onmessage(evt) {
-                    var data = $.parseJSON(evt.data);
-                    var name = $("<span id='name'>").append(data.name);
-                    self.chatlog.append($("<li>").append(name).text(data.msg));
+                    var data = $.parseJSON(evt.data)
+                    self.add_message(data);
                 }
+            },
+            
+            add_message: function add_message(data) {
+                var klass   = '',
+                    name_   = data.name,
+                    row     = $("<li>"),
+                    name    = $("<p class='name'>"),
+                    time    = $("<p class='time'>"),
+                    message = $("<p class='message'>"),
+                    clear   = $("<div class='clear'>")
+                
+                message.append(data.message)
+                name.append(data.name)
+                time.append("5:09")
+                
+                if (this.same_as_last_chatter(data)) {
+                    message.addClass('secondary')
+                    this.chatlog.find("li:last").append(message)
+                } else {
+                    this.chatlog.append(
+                        row.append(name)
+                            .append(time)
+                            .append(clear.clone())
+                            .append(message)
+                            .append(clear))
+                }
+                
+                this.last_chatter = data.name
+            },
+            
+            same_as_last_chatter: function same_as_last_chatter(data) {
+                return (this.last_chatter == data.name)
+            },
+            
+            add_secondary: function add_secondary() {
+                
             }
         }
         

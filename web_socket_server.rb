@@ -13,8 +13,8 @@ class Client
     @name   = socket.request["Query"]["name"]
   end
   
-  def send(msg)
-    @socket.send({ :name => @name, :msg => msg }.to_json)
+  def send(data)
+    @socket.send data
   end
 end
 
