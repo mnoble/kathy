@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crew Chat</title>
+    <style type="text/css" media="screen">
+        #chat-log       { width: 400px; height: 300px; padding: 0; border: 1px solid #E9E9E9; }
+        #input          { width: 400px; height: 25px; border: 1px solid #CCCCCC; }
+    </style>
+    
+    <script type="text/javascript" charset="utf-8" src="jquery.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    var CrewChat;
+    $(function() { 
+        CrewChat = {
+            chatlog: $("#chat-log"),
+            input:   $("#input"),
+            client: null,
+            
+            start: function start() {
+                var self = this;
+                this.client = new WebSocket("ws://0.0.0.0:8080?name=Matte");
+                this.client.onmessage = function onmessage(evt) {
+                    var data = $.parseJSON(evt.data);
+                    var name = $("<span id='name'>").append(data.name);
+                    self.chatlog.append($("<li>").append(name).text(data.msg));
+                }
+            }
+        }
+        
+        CrewChat.start();
+    });
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <ul id="chat-log"></ul>
+        <input type="text" id="input" />
+    </div>
+</body>
+</html>
