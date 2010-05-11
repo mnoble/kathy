@@ -25,7 +25,10 @@ EventMachine.run do
       @clients[socket.signature] = Client.new(socket)
       
       @clients.each do |id, client|
-        client.send({ :joined => @clients[socket.signature].name }.to_json)
+        client.send({
+          :event => :joined,
+          :name => @clients[socket.signature].name
+        }.to_json)
       end
     end
     
@@ -35,7 +38,10 @@ EventMachine.run do
     
     socket.onclose do
       @clients.each do |id, client|
-        client.send({ :disconnect => @clients[socket.signature].name }.to_json)
+        client.send({ 
+          :event => :disconnect, 
+          :name  => @clients[socket.signature].name
+        }.to_json)
       end
     end
     
