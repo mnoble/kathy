@@ -7,7 +7,6 @@ class Client
   attr_reader :id, :name
   
   def initialize(socket)
-    p socket
     @socket = socket
     @id     = socket.signature
     @name   = socket.request["Query"]["name"]
@@ -19,10 +18,26 @@ class Client
 end
 
 EventMachine.run do
-  @clients = []
+  @clients = {}
   EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |socket|
-    socket.onopen    { @clients << Client.new(socket) }
-    socket.onmessage { |data| @clients.each { |client| client.send data }}
-    socket.onclose   { socket.send "Adios." }
+    
+    socket.onopen do
+      @clients[socket.signature] = Client.new(socket)
+      
+      @clients.each do |id, client|
+        client.send({ :joined => @clients[socket.signature].name }.to_json)
+      end
+    end
+    
+    socket.onmessage do |data|
+      @clients.each { |id, client| client.send data }
+    end
+    
+    socket.onclose do
+      @clients.each do |id, client|
+        client.send({ :disconnect => @clients[socket.signature].name }.to_json)
+      end
+    end
+    
   end
 end

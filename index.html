@@ -5,15 +5,24 @@
     <style type="text/css" media="screen">
         /* LAYOUT */
         div.clear               { clear: both; }
-        #wrap                   { width: 700px; height: 600px; margin: 100px auto 0 auto;}
-        #chat-log               { width: 660px; height: 525px; margin: 0; padding: 20px; background: #D0D6DC; border: 1px solid #E9E9E9; border-bottom: 0; list-style: none; overflow-y: scroll; }
-        #chat-log li            { border-radius: 10px; margin: 5px 0; background: #FFFFFF; border: 1px solid #C5CACE; padding: 10px; }
+        
+        body                    { background: url("images/crew.jpg") no-repeat; background-size: 100%; background-position: 0 -260px; }
+        #wrap                   { width: 900px; height: 598px; margin: 75px auto 0 auto; padding: 15px; background: url("images/black.png"); }
+        
+        #users                  { width: 150px; height: 524px; margin: 0; padding: 20px; border: 1px solid #E9E9E9; background: #E9F1FA; border-right: 0; border-bottom-color: #DDDDDD; float: left; list-style: none; }
+        #users li               { background: url("images/user.png") no-repeat; text-indent: 25px; padding-top: 2px; }
+        
+        #title                  { width: 899px; height: 24px; padding-top: 6px; background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BFC7D4), to(#899AB3)); text-align: center; font: bold 16px Helvetica; color: #FFFFFF; text-shadow: #767C8E -1px -1px 1px; }
+        #chat-log               { width: 668px; height: 496px; float: left; margin: 0; padding: 20px; background: url("images/bg.png"); list-style: none; overflow-y: auto; }
+        #chat-log li            { border-radius: 10px; margin: 5px 0; background: #F9F9F9; border: 1px solid #C0C0C0; padding: 10px; }
+        #chat-log li.event      { border: 0; background: none; text-align: center; font-size: 11px; color: #666666; text-shadow: #F0F0F0 1px 1px 0; }
         #chat-log li p          { display: block; margin: 0; }
         #chat-log li p.name     { font-weight: bold; padding-bottom: 10px; float: left; }
         #chat-log li p.time     { font-weight: bold; padding-bottom: 10px; float: right; color: #999999; }
         #chat-log p.secondary   { margin-top: 10px; }
         
-        #input                  { width: 680px; height: 30px; margin: 0; padding: 0 10px; border: 1px solid #CCCCCC; }
+        #toolbar                { width: 190px; height: 30px; float: left; background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F9F9F9), to(#EDEDED)); border: 1px solid #DDDDDD; border-right: 0; border-top: 0; }
+        #input                  { width: 686px; height: 30px; float: left; margin: 0; padding: 0 10px; border: 1px solid #DDDDDD; border-top: 0; outline: 0; font-weight: bold; }
         
         /* TYPOGRAPHY */
         html                    { font: 12px Helvetica; }
@@ -21,69 +30,21 @@
     
     <script type="text/javascript" charset="utf-8" src="jquery.js"></script>
     <script type="text/javascript" charset="utf-8" src="json.js"></script>
-    <script type="text/javascript" charset="utf-8">
-    var CrewChat;
-    $(function() { 
-        CrewChat = {
-            chatlog: $("#chat-log"),
-            input:   $("#input"),
-            client: null,
-            
-            start: function start() {
-                var self = this
-                this.client = new WebSocket("ws://0.0.0.0:8080?name=Matte")
-                this.client.onmessage = function onmessage(evt) {
-                    var data = $.parseJSON(evt.data)
-                    self.add_message(data);
-                }
-            },
-            
-            add_message: function add_message(data) {
-                var klass   = '',
-                    name_   = data.name,
-                    row     = $("<li>"),
-                    name    = $("<p class='name'>"),
-                    time    = $("<p class='time'>"),
-                    message = $("<p class='message'>"),
-                    clear   = $("<div class='clear'>")
-                
-                message.append(data.message)
-                name.append(data.name)
-                time.append("5:09")
-                
-                if (this.same_as_last_chatter(data)) {
-                    message.addClass('secondary')
-                    this.chatlog.find("li:last").append(message)
-                } else {
-                    this.chatlog.append(
-                        row.append(name)
-                            .append(time)
-                            .append(clear.clone())
-                            .append(message)
-                            .append(clear))
-                }
-                
-                this.last_chatter = data.name
-            },
-            
-            same_as_last_chatter: function same_as_last_chatter(data) {
-                return (this.last_chatter == data.name)
-            },
-            
-            add_secondary: function add_secondary() {
-                
-            }
-        }
-        
-        CrewChat.start();
-    });
-    </script>
+    <script type="text/javascript" charset="utf-8" src="crewchat.js"></script>
 </head>
 
 <body>
     <div id="wrap">
-        <ul id="chat-log"></ul>
+        <ul id="users"></ul>
+        <div id="chat-wrap">
+            <div id="title">Crew Town Chat</div>
+            <ul id="chat-log"></ul>
+        </div>
+        <div class="clear"></div>
+        
+        <div id="toolbar"></div>
         <input type="text" id="input" />
+        <div class="clear"></div>
     </div>
 </body>
 </html>
