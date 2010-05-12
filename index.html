@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Crew Chat</title>
+    <title>socks</title>
     <style type="text/css" media="screen">
         /* LAYOUT */
         *:hover                 { cursor: default; }
         div.clear               { clear: both; }
         
-        body                    { background: url("images/crew.jpg") no-repeat; background-size: 100%; background-position: 0 -260px; }
+        body                    { background: url("images/fjord.jpg") no-repeat; background-size: 100%; }
         #wrap                   { width: 900px; height: 598px; margin: 75px auto 0 auto; padding: 15px; background: url("images/black.png"); }
         
         #users                  { width: 150px; height: 564px; margin: 0; padding: 0 20px; border: 1px solid #E9E9E9; background: #E9F1FA; border-right: 0; border-bottom-color: #DDDDDD; float: left; list-style: none; overflow-y: auto; }
@@ -36,16 +36,17 @@
         html                    { font: 12px Helvetica; }
     </style>
     
-    <script type="text/javascript" charset="utf-8" src="jquery.js"></script>
-    <script type="text/javascript" charset="utf-8" src="json.js"></script>
-    <script type="text/javascript" charset="utf-8" src="crewchat.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/vendor/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/vendor/json.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/vendor/require.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/socks.js"></script>
 </head>
 
 <body>
     <div id="wrap">
         <ul id="users"></ul>
         <div id="chat-wrap">
-            <div id="title">Crew Town Chat</div>
+            <div id="title">socks</div>
             <ul id="chat-log"></ul>
         </div>
         <div class="clear"></div>
