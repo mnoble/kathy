@@ -22,7 +22,9 @@ EventMachine.run do
   EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |socket|
     
     socket.onopen do
-      @clients[socket.signature] = Client.new(socket)
+      client = Client.new(socket)
+      puts "[CONNECTION]    #{ client.id } #{ client.name }"
+      @clients[socket.signature] = client
       
       @clients.each do |id, client|
         client.send({
@@ -43,7 +45,9 @@ EventMachine.run do
           :name  => @clients[socket.signature].name
         }.to_json)
       end
+      
+      client = @clients[socket.signature]
+      puts "[DISCONNECTION] #{ client.id } #{ client.name }"
     end
-    
   end
 end

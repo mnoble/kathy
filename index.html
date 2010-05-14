@@ -8,28 +8,33 @@
         div.clear               { clear: both; height: 0; }
         
         body                    { background: url("images/fjord.jpg") no-repeat; background-size: 100%; }
-        #wrap                   { width: 900px; height: 598px; margin: 75px auto 0 auto; padding: 15px; background: url("images/black.png"); }
+        #wrap                   { width: 75%; height: 600px; margin: 75px auto 0 auto; padding: 15px; background: url("images/black.png"); }
         
-        #users                  { width: 150px; height: 564px; margin: 0; padding: 0 20px; border: 1px solid #E9E9E9; background: #E9F1FA; border-right: 0; border-bottom-color: #DDDDDD; float: left; list-style: none; overflow-y: auto; }
-        #users li               { background: url("images/user.png") no-repeat; text-indent: 25px; padding-top: 2px; margin: 10px 0; }
+        #left                   { float: left; width: 20%; }
+        #right                  { float: left; width: 80%; }
         
-        #title                  { width: 899px; height: 24px; padding-top: 6px; background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BFC7D4), to(#899AB3)); text-align: center; font: bold 16px Helvetica; color: #FFFFFF; text-shadow: #767C8E -1px -1px 1px; }
-        #chat-log               { width: 668px; height: 495px; float: left; margin: 0; padding: 20px; background: url("images/bg.png"); list-style: none; overflow-y: auto; border-bottom: 1px solid #BFC7D4; }
-        #chat-log li            { border-radius: 10px; margin: 5px 0; background: #F9F9F9; border: 1px solid #C0C0C0; padding: 10px; }
-        #chat-log li.event      { border: 0; margin: 0; padding: 3px 0; background: none; text-align: center; font-size: 11px; color: #666666; text-shadow: #F0F0F0 1px 1px 0; }
-        #chat-log li.name       { font-weight: bold; padding: 0; margin: 0; text-indent: 10px; background: none; border: none; text-shadow: #F0F0F0 1px 1px 0; }
+        #users                  { width: 100%; height: 570px; margin: 0; padding: 0; border: 1px solid #E9E9E9; background: #E9F1FA; border-right: 0; border-bottom-color: #DDDDDD; list-style: none; overflow-y: auto; }
+        #users li               { background: url("images/user.png") no-repeat; text-indent: 22%; background-position: 10% 5px; margin: 10px 0; padding: 6px 0; }
+        
+        #title                  { width: 100%; height: 40px; background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BFC7D4), to(#899AB3)); border-bottom: 1px solid #778AA8; }
+        #title p                { width: 90%; padding-top: 10px; margin: 0 auto; text-align: center; font: bold 16px Helvetica; color: #FFFFFF; text-shadow: #767C8E -1px -1px 1px; }
+        #chat-log               { width: 100%; height: 530px; margin: 0; padding: 0; background: url("images/bg.png"); list-style: none; overflow-y: auto; border-bottom: 1px solid #BFC7D4; }
+        #chat-log li            { width: 90%; border-radius: 10px; margin: 5px auto; background: #F9F9F9; border: 1px solid #C0C0C0; padding: 10px; }
+        #chat-log li.event      { border: 0; margin: 0 auto; padding: 10px 0; background: none; text-align: center; font-size: 11px; color: #666666; text-shadow: #F0F0F0 1px 1px 0; }
+        #chat-log li.name       { font-weight: bold; padding: 0; margin: 0 auto; background: none; border: none; text-shadow: #F0F0F0 1px 1px 0; }
         #chat-log li.name + li  { margin-top: 2px; }
         #chat-log li p          { display: block; margin: 0; }
-        #chat-log li p.message  { width: 600px; margin: 10px 0; }
+        #chat-log li p.message  { width: 90%; margin: 10px 0; }
         #chat-log li p.message:last-child  { margin-bottom: 0; }
         #chat-log li p.message:first-child { float: left; margin: 0; }
         #chat-log li p.time     { width: 40px; font-weight: bold; float: right; color: #999999; }
         
-        #toolbar                { width: 190px; height: 30px; float: left; background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F9F9F9), to(#EDEDED)); border: 1px solid #DDDDDD; border-right: 0; border-top: 0; }
-        #toolbar .button        { height: 30px; width: 30px; float: left; text-align: center; font-size: 24px; font-weight: bold; color: #666666; border-left: 1px solid #FFFFFF; border-right: 1px solid #DDDDDD; }
+        #toolbar                { width: 100%; height: 30px; background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F9F9F9), to(#EDEDED)); border: 1px solid #DDDDDD; border-top: 0; }
+        #toolbar .button        { height: 30px; padding: 0 10px; float: left; text-align: center; font-size: 24px; font-weight: bold; color: #666666; border-left: 1px solid #FFFFFF; border-right: 1px solid #DDDDDD; }
         #toolbar .button:active { background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DDDDDD), to(#F9F9F9)); border-left-color: #EEEEEE; }
         
-        #input                  { width: 686px; height: 29px; float: left; margin: 0; padding: 0 10px; border: 1px solid #DDDDDD; outline: 0; font-weight: bold; }
+        #input                  { width: 97.8%; height: 14px; min-height: 14px; margin: 0; padding: 8px 1%; border: 1px solid #CCCCCC; border-top: 0; outline: 0; background: #FFFFFF; font-weight: bold; resize: none; overflow-y: hidden; }
+        #input-shadow           { display: none; width: 97.8%; padding: 8px 1%; font-weight: bold; font-size: 13px; }
         #input:hover            { cursor: text; }
         
         /* TYPOGRAPHY */
@@ -44,18 +49,20 @@
 
 <body>
     <div id="wrap">
-        <ul id="users"></ul>
-        <div id="chat-wrap">
-            <div id="title">socks</div>
-            <ul id="chat-log"></ul>
+        <div id="left">
+            <ul id="users"></ul>
+            <div id="toolbar"></div>
         </div>
-        <div class="clear"></div>
         
-        <div id="toolbar">
-            <div class="button">+</div>
-            <div class="button">-</div>
+        <div id="right">
+            <div id="title">
+                <p>socks</p>
+            </div>
+            <ul id="chat-log"></ul>
+            <textarea id="input"></textarea>
+            <div id="input-shadow"></div>
         </div>
-        <input type="text" id="input" />
+        
         <div class="clear"></div>
     </div>
 </body>
