@@ -1,0 +1,173 @@
+*:hover
+  cursor: default
+
+div.clear
+  clear: both
+
+html
+  font: 12px Helvetica
+
+body
+  background: #EEEEEE
+
+#wrap
+  background: url("../../images/black.png")
+  height: 600px
+  margin: 75px auto 0 auto
+  padding: 15px
+  width: 75%
+
+#left
+  float: left
+  width: 20%
+  
+  #users
+    width: 100%
+    height: 570px
+    margin: 0
+    padding: 0
+    border: 1px solid #E9E9E9
+    background: #E9F1FA
+    border-right: 0
+    border-bottom-color: #DDDDDD
+    list-style: none
+    overflow-y: auto
+
+    li
+      background: url("../../images/user.png") no-repeat
+      background-position: 10% 5px
+      margin: 10px 0
+      padding: 6px 0
+      text-indent: 22%
+  
+  #toolbar
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F9F9F9), to(#EDEDED))
+    border: 1px solid #DDDDDD
+    border-top: 0
+    height: 30px
+    width: 100%
+    
+    .button
+      border-left: 1px solid #FFFFFF
+      border-right: 1px solid #DDDDDD
+      color: #666666
+      float: left
+      font-size: 24px
+      font-weight: bold
+      height: 30px
+      padding: 0 10px
+      text-align: center
+    
+    .button:active
+      background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DDDDDD), to(#F9F9F9))
+      border-left-color: #EEEEEE
+
+
+#right
+  float: left
+  width: 80%
+  
+  #title
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BFC7D4), to(#899AB3))
+    border-bottom: 1px solid #778AA8
+    height: 40px
+    width: 100%
+    
+    p
+      color: #FFFFFF
+      font: bold 16px Helvetica
+      margin: 0 auto
+      padding-top: 10px
+      text-align: center
+      text-shadow: #767C8E -1px -1px 1px
+      width: 90%
+  
+  #chat-log
+    background: url("../../images/bg.png")
+    border-bottom: 1px solid #BFC7D4
+    height: 530px
+    list-style: none
+    margin: 0
+    overflow-y: auto
+    padding: 0
+    width: 100%
+    
+    li
+      background: #F9F9F9
+      border: 1px solid #C0C0C0
+      border-radius: 10px
+      margin: 5px auto
+      padding: 10px
+      width: 90%
+    li.event
+      background: none
+      border: 0
+      color: #666666
+      font-size: 11px
+      margin: 0 auto
+      padding: 10px 0
+      text-align: center
+      text-shadow: #F0F0F0 1px 1px 0
+    li.name
+      @extend .event
+      font-weight: bold
+      padding: 0
+      text-align: left
+      font-size: 13px
+      text-shadow: #F0F0F0 1px 1px 0
+    li.name + li
+      margin-top: 2px
+      
+      p
+        display: block
+        margin: 0
+      p.message
+        margin: 10px 0
+        width: 90%
+      p.message:first-child
+        float: left
+        margin: 0
+      p.message:last-child
+        margin-bottom: 0
+      p.time
+        color: #999999
+        float: right
+        font-weight: bold
+        width: 40px
+          
+  #input
+    background: #FFFFFF
+    border: 1px solid #CCCCCC
+    border-top: 0
+    font-weight: bold
+    height: 14px
+    margin: 0
+    min-height: 14px
+    outline: 0
+    overflow-y: hidden
+    padding: 8px 1%
+    resize: none
+    width: 97.8%
+  
+  #input:hover
+    cursor: text
+  
+  #input-shadow
+    display: none
+    font-size: 13px
+    font-weight: bold
+    padding: 8px 1%
+    width: 97.8%
+
+
+
+
+
+
+
+
+
+
+
+
+
