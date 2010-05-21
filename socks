@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'em-websocket'
+require 'json'
+
+module Socks
+  class Room
+    attr_accessor :users
+
+    def initialize
+      @users = []
+    end
+
+    def send(*data)
+      @users.each { |u| u.send data.pop.to_json }
+    end
+  
+    def add_user(socket)
+      user = Socks::User.new(socket)
+      @users[socket.signature] = user 
+      send :event => :joined, :name => user.name
+    end
+
+    def remove_user(socket)
+      user = @users[socket.signature].delete
+      send :event => :disconnect, :name => user.name
+    end
+  end
+
+  
+  class User
+    attr_reader :id, :name
+  
+    def initialize(socket)
+      @socket = socket
+      @id     = socket.signature
+      @name   = socket.request["Query"]["name"]
+    end
+  
+    def send(data)
+      @socket.send data
+    end
+  end
+end
+
+EventMachine.run do
+  @room = Socks::Room.new
+  EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |socket|
+    socket.onopen     { @room.add_user(socket) }
+    socket.onmessage  { |data| @room.send data }
+    socket.onclose    { @room.remove_user(socket) }
+  end
+end
