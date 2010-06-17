@@ -8,7 +8,10 @@ html {
   font: 12px Helvetica; }
 
 body {
-  background: #eeeeee; }
+  margin: 0;
+  padding: 0;
+  background: #eeeeee;
+  overflow: hidden; }
 
 #wrap {
   background: url("../../images/black.png");
@@ -37,6 +40,26 @@ body {
       margin: 10px 0;
       padding: 6px 0;
       text-indent: 22%; }
+    #left #users li.meta {
+      background: none;
+      background-position: auto;
+      margin: 0;
+      padding: 0;
+      text-indent: 0; }
+    #left #users #login {
+      padding: 8px 0;
+      background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dddddd), to(#aaaaaa));
+      border-bottom: 1px solid #888888; }
+      #left #users #login #username {
+        margin-left: 12px; }
+      #left #users #login #join {
+        width: 50px;
+        height: 20px;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eeeeee), to(#cccccc));
+        border: 1px solid #999999;
+        border-radius: 3px; }
+      #left #users #login #join:active {
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#bbbbbb), to(#eeeeee)); }
   #left #toolbar {
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f9f9f9), to(#ededed));
     border: 1px solid #dddddd;
@@ -60,12 +83,12 @@ body {
 #right {
   float: left;
   width: 80%; }
-  #right #title {
+  #right .title {
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#bfc7d4), to(#899ab3));
     border-bottom: 1px solid #778aa8;
     height: 40px;
     width: 100%; }
-    #right #title p {
+    #right .title p {
       color: white;
       font: bold 16px Helvetica;
       margin: 0 auto;
@@ -134,7 +157,7 @@ body {
     overflow-y: hidden;
     padding: 8px 1%;
     resize: none;
-    width: 97.8%; }
+    width: 98%; }
   #right #input:hover {
     cursor: text; }
   #right #input-shadow {

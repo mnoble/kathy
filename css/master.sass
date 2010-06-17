@@ -1,4 +1,4 @@
-$root = "../.."
+$root: unquote("../..")
 
 *:hover
   cursor: default
@@ -10,7 +10,10 @@ html
   font: 12px Helvetica
 
 body
+  margin: 0
+  padding: 0
   background: #EEEEEE
+  overflow: hidden
 
 #wrap
   background: url("#{$root}/images/black.png")
@@ -41,6 +44,31 @@ body
       margin: 10px 0
       padding: 6px 0
       text-indent: 22%
+    
+    li.meta
+      background: none
+      background-position: auto
+      margin: 0
+      padding: 0
+      text-indent: 0
+    
+    #login
+      padding: 8px 0
+      background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DDDDDD), to(#AAAAAA))
+      border-bottom: 1px solid #888888
+      
+      #username
+        margin-left: 12px
+      
+      #join
+        width: 50px
+        height: 20px
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#EEEEEE), to(#CCCCCC))
+        border: 1px solid #999999
+        border-radius: 3px
+      
+      #join:active
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BBBBBB), to(#EEEEEE))
   
   #toolbar
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F9F9F9), to(#EDEDED))
@@ -69,7 +97,7 @@ body
   float: left
   width: 80%
   
-  #title
+  .title
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BFC7D4), to(#899AB3))
     border-bottom: 1px solid #778AA8
     height: 40px
@@ -149,7 +177,7 @@ body
     overflow-y: hidden
     padding: 8px 1%
     resize: none
-    width: 97.8%
+    width: 98%
   
   #input:hover
     cursor: text

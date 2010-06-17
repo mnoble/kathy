@@ -6,20 +6,26 @@
     <script type="text/javascript" charset="utf-8" src="lib/vendor/jquery.js"></script>
     <script type="text/javascript" charset="utf-8" src="lib/vendor/json.js"></script>
     <script type="text/javascript" charset="utf-8" src="lib/vendor/require.js"></script>
-    <script type="text/javascript" charset="utf-8" src="lib/socks.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/kathy.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        // $(function() { Kathy.Controller.init("Matte") })
+    </script>
 </head>
 
 <body>
     <div id="wrap">
         <div id="left">
-            <ul id="users"></ul>
+            <ul id="users">
+                <li id="login" class="meta">
+                    <input type="text" value="username" id="username" />
+                    <button id="join">join</button>
+                </li>
+            </ul>
             <div id="toolbar"></div>
         </div>
         
         <div id="right">
-            <div id="title">
-                <p>socks</p>
-            </div>
+            <div class="title"><p>Kathy</p></div>
             <ul id="chat-log"></ul>
             <textarea id="input"></textarea>
             <div id="input-shadow"></div>
