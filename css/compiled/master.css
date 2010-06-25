@@ -47,19 +47,45 @@ body {
       padding: 0;
       text-indent: 0; }
     #left #users #login {
-      padding: 8px 0;
+      padding: 7px 0;
       background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dddddd), to(#aaaaaa));
       border-bottom: 1px solid #888888; }
       #left #users #login #username {
-        margin-left: 12px; }
+        outline: none;
+        margin-left: 12px;
+        border-radius: 10px;
+        border: 1px solid #aaaaaa;
+        -webkit-box-shadow: #dedede 1px 1px 0;
+        padding: 3px 0 3px 10px;
+        font-weight: bold;
+        color: #797979; }
       #left #users #login #join {
         width: 50px;
-        height: 20px;
-        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eeeeee), to(#cccccc));
-        border: 1px solid #999999;
-        border-radius: 3px; }
+        padding-left: 8px;
+        height: 22px;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f4f4f4), to(#dedede));
+        border: 1px solid #989898;
+        font-weight: bold;
+        color: #666666;
+        text-shadow: #f4f4f4 1px 1px 0;
+        border-radius: 10px;
+        -webkit-box-shadow: #dedede 1px 1px 0; }
       #left #users #login #join:active {
-        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#bbbbbb), to(#eeeeee)); }
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#999999), to(#dedede)); }
+      #left #users #login #connected_as {
+        text-align: center;
+        margin: 10px 0 0 0;
+        color: #333333;
+        text-shadow: #dddddd 1px 1px 0; }
+        #left #users #login #connected_as span {
+          font-weight: bold; }
+      #left #users #login .error {
+        text-align: center;
+        margin: 10px 0 0 0;
+        padding: 0;
+        color: #333333;
+        font-weight: bold;
+        text-shadow: #dddddd 1px 1px 0; }
   #left #toolbar {
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f9f9f9), to(#ededed));
     border: 1px solid #dddddd;
