@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+$:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+require 'rubygems'
+require 'optparse'
+require 'em-websocket'
+require 'kathy-server'
+
+opts  = { :port => 1234 }
+green = "\e[1;32m"
+reset = "\e[0m"
+
+OptionParser.new do |o|
+  o.banner = "Usage: kathy [options]"
+  o.on("-p", "--port PORT", "Port to run on")  { |port| opts[:port] = port }
+  o.on("-h", "--help", "You're looking at it") { puts opt; exit }
+end.parse!
+
+print "=> Preparing to get chatty on port #{ opts[:port] } ... "
+
+EventMachine.run do
+  port = opts[:port]
+  room = KathyServer::Room.new
+  puts "#{ green }Done.#{ reset }"
+  
+  EventMachine::WebSocket.start(:host => "0.0.0.0", :port => port) do |socket|
+    socket.onopen    { room.add_user(socket) }
+    socket.onmessage { |data| room.send_to_users(data) }
+    socket.onclose   { room.remove_user(socket) }
+  end
+end
