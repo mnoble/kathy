@@ -10,8 +10,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #eeeeee;
-  overflow: hidden; }
+  background: #eeeeee; }
 
 #wrap {
   background: url("../../images/black.png");
@@ -30,6 +29,7 @@ body {
     padding: 0;
     border: 1px solid #e9e9e9;
     background: #e9f1fa;
+    border-left: 0;
     border-right: 0;
     border-bottom-color: #dddddd;
     list-style: none;
@@ -47,12 +47,12 @@ body {
       padding: 0;
       text-indent: 0; }
     #left #users #login {
-      padding: 7px 0;
       background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dddddd), to(#aaaaaa));
-      border-bottom: 1px solid #888888; }
+      border-bottom: 1px solid #888888;
+      height: 39px; }
       #left #users #login #username {
         outline: none;
-        margin-left: 12px;
+        margin-left: 14px;
         border-radius: 10px;
         border: 1px solid #aaaaaa;
         -webkit-box-shadow: #dedede 1px 1px 0;
@@ -61,7 +61,7 @@ body {
         color: #797979; }
       #left #users #login #join {
         width: 50px;
-        padding-left: 8px;
+        margin-top: 8px;
         height: 22px;
         background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f4f4f4), to(#dedede));
         border: 1px solid #989898;
@@ -74,7 +74,8 @@ body {
         background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#999999), to(#dedede)); }
       #left #users #login #connected_as {
         text-align: center;
-        margin: 10px 0 0 0;
+        padding-top: 12px;
+        margin: 0;
         color: #333333;
         text-shadow: #dddddd 1px 1px 0; }
         #left #users #login #connected_as span {
@@ -187,8 +188,10 @@ body {
   #right #input:hover {
     cursor: text; }
   #right #input-shadow {
-    display: none;
-    font-size: 13px;
+    position: relative;
+    left: -99999px;
+    border: 1px solid transparent;
+    font: 11px "Lucida Grande";
     font-weight: bold;
     padding: 8px 1%;
     width: 97.8%; }

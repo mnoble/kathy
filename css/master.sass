@@ -13,7 +13,6 @@ body
   margin: 0
   padding: 0
   background: #EEEEEE
-  overflow: hidden
 
 #wrap
   background: url("#{$root}/images/black.png")
@@ -33,6 +32,7 @@ body
     padding: 0
     border: 1px solid #E9E9E9
     background: #E9F1FA
+    border-left: 0
     border-right: 0
     border-bottom-color: #DDDDDD
     list-style: none
@@ -53,13 +53,13 @@ body
       text-indent: 0
     
     #login
-      padding: 7px 0
       background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DDDDDD), to(#AAAAAA))
       border-bottom: 1px solid #888888
+      height: 39px
       
       #username
         outline: none
-        margin-left: 12px
+        margin-left: 14px
         border-radius: 10px
         border: 1px solid #AAAAAA
         -webkit-box-shadow: #DEDEDE 1px 1px 0
@@ -69,7 +69,7 @@ body
       
       #join
         width: 50px
-        padding-left: 8px
+        margin-top: 8px
         height: 22px
         background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F4F4), to(#DEDEDE))
         border: 1px solid #989898
@@ -84,7 +84,8 @@ body
       
       #connected_as
         text-align: center
-        margin: 10px 0 0 0
+        padding-top: 12px
+        margin: 0
         color: #333333
         text-shadow: #DDDDDD 1px 1px 0
         
@@ -212,8 +213,10 @@ body
     cursor: text
   
   #input-shadow
-    display: none
-    font-size: 13px
+    position: relative
+    left: -99999px
+    border: 1px solid transparent
+    font: 11px "Lucida Grande"
     font-weight: bold
     padding: 8px 1%
     width: 97.8%
